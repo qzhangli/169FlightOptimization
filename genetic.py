@@ -42,7 +42,7 @@ def geneticoptimize(domain, costf, popsize=50, step=1, mutprob=0.2, elite=0.2, m
 
     # Main loop
     for i in range(maxiter):
-        scores = [(costf(v), v) for v in pop]  # evaluate the cost of all solutions
+        scores = [(costf(v), v) for v in pop if v != None]  # evaluate the cost of all solutions
         scores.sort()  # rank according to cost
         ranked = [v for (s, v) in scores]  # only select the solutions, not cost
 
@@ -62,7 +62,7 @@ def geneticoptimize(domain, costf, popsize=50, step=1, mutprob=0.2, elite=0.2, m
                 pop.append(crossover(ranked[c1], ranked[c2]))
 
         # Print current best score
-        print(scores[0][0])
+        # print(scores[0][0])
 
     return scores[0][1]
 
