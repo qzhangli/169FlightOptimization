@@ -49,7 +49,7 @@ domain = [(0,8)]*(len(gto.people)*2)    # [(0,8), (0,8), ..., ]
 
 # Optimizing
 s = hillclimb(domain, gto.schedulecost)
-print s
+print(s)
 
 # Pull the data and present
 gto.schedulecost(s)
