@@ -22,7 +22,7 @@ def geneticoptimize(domain, costf, popsize=50, step=1, mutprob=0.2, elite=0.2, m
         i = random.randint(0, len(domain) - 1)  # pick an index
         if random.random() < 0.5 and vec[i] > domain[i][0]:
             return vec[0:i] + [vec[i] - step] + vec[i + 1:]  # -1 to change
-        elif vec[i] < domain[i][1]:
+        else:
             return vec[0:i] + [vec[i] + step] + vec[i + 1:]  # +1 to change
 
     # Crossover/breeding: taking two best solutions and breed
@@ -42,7 +42,7 @@ def geneticoptimize(domain, costf, popsize=50, step=1, mutprob=0.2, elite=0.2, m
 
     # Main loop
     for i in range(maxiter):
-        scores = [(costf(v), v) for v in pop if v != None]  # evaluate the cost of all solutions
+        scores = [(costf(v), v) for v in pop]  # evaluate the cost of all solutions
         scores.sort()  # rank according to cost
         ranked = [v for (s, v) in scores]  # only select the solutions, not cost
 
